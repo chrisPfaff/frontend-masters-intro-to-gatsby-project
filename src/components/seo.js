@@ -9,7 +9,7 @@ export function Seo(props) {
         siteMetadata {
           title
           description
-          sitUrl
+          siteUrl
           image
         }
       }
@@ -18,7 +18,7 @@ export function Seo(props) {
   const defaults = data?.site?.siteMetadata;
 
   const title = props.title || defaults.title;
-  const descripton = props.descripton || defaults.descripton;
+  const description = props.description || defaults.description;
   const image = new URL(props.image || defaults.image, defaults.siteUrl);
   const url = new URL(props.path || '/', defaults.siteUrl);
 
