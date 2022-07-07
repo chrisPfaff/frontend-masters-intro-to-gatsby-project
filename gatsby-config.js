@@ -28,11 +28,32 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 1200,
+            },
+          },
+        ],
         defaultLayouts: {
           posts: require.resolve('./src/components/postlayout.js'),
         },
       },
     },
     //END MDX CONFIG FOR POSTS
+    //Image compression
+    'gatsby-remark-images',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: `${__dirname}/src/images`,
+      },
+    },
+    'gatsby-plugin-image',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+    //end image compression
   ],
 };

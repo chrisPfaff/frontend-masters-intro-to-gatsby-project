@@ -2,6 +2,9 @@ import * as React from 'react';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import Layout from '../components/layout.js';
 
+import { StaticImage } from 'gatsby-plugin-image';
+import { imageWrapper } from '../styles/index.module.css';
+
 export default function IndexPage() {
   const data = useStaticQuery(graphql`
     query GetBlogPosts {
@@ -22,15 +25,21 @@ export default function IndexPage() {
 
   return (
     <Layout>
+      <div className={imageWrapper}>
+        <StaticImage
+          src="../images/ivana-la-61jg6zviI7I-unsplash.jpg"
+          alt="Corgi photo"
+          placeholder="blurred"
+          width={300}
+          height={300}
+        />
+      </div>
       <h1>h1</h1>
-      <Link to="https://www.google.com" target="_blank">
-        Google
-      </Link>
-      <h2>Check out the blog</h2>
+      <h3>Check out the blog</h3>
       <ul>
         {posts.map((post) => (
           <li key={post.id}>
-            <Link to={post.slug}>{post.frontmatter.title} </Link>{' '}
+            <Link to={post.slug}>{post.frontmatter.title}</Link> <br />
             <small>posted {post.frontmatter.date}</small>
           </li>
         ))}
